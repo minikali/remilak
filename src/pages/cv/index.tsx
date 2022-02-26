@@ -118,21 +118,23 @@ const Curriculum = ({ cv }: Props) => {
         </section>
         <section className={s.education}>
           <h3>Education</h3>
-          {educations.data.map((education) => {
-            const key = `education-${education.id}`;
+          <ul>
+            {educations.data.map((education) => {
+              const key = `education-${education.id}`;
 
-            const { diploma, school, location, startDate, endDate } =
-              education.attributes;
-            return (
-              <Fragment key={key}>
-                <h4>{diploma}</h4>
-                <p>{`${school}, ${location}`}</p>
-                <p>
-                  <i>{`${startDate}-${endDate}`}</i>
-                </p>
-              </Fragment>
-            );
-          })}
+              const { diploma, school, location, startDate, endDate } =
+                education.attributes;
+              return (
+                <li key={key}>
+                  <h4>{diploma}</h4>
+                  <p>{`${school}, ${location}`}</p>
+                  <p>
+                    <i>{`${startDate}-${endDate}`}</i>
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
         </section>
         <section className={s.skills}>
           <h3>Skills</h3>
@@ -224,7 +226,7 @@ export async function getStaticProps() {
     }
   );
   const res = await fetch(
-    `http://localhost:1337/api/curriculum-vitae?${query}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/curriculum-vitae?${query}`
   );
   const json = await res.json();
 

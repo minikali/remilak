@@ -8,7 +8,7 @@
   background-color: #00000010;
   font-family: Arial, Helvetica, sans-serif;
   color: #444444;
-  gap: 20px;
+  gap: 1.5rem;
 }
 
 .informations {
@@ -36,7 +36,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  margin: 10px 0 0 0;
+  margin: 0.5rem 0 0 0;
 }
 
 .contactItem span {
@@ -44,7 +44,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-left: 5px;
+  margin-left: 0.3rem;
 }
 
 .contactItem svg {
@@ -68,6 +68,20 @@
 
 .education {
   text-align: right;
+}
+
+.education ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.education ul li h4 {
+  margin: 1.5rem 0 0 0;
+}
+
+.education ul li p {
+  margin: .5rem 0 0 0;
 }
 
 .experience {
