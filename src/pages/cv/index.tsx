@@ -9,6 +9,8 @@ import PictoLocation from '@assets/svg/picto_location.svg';
 import PictoPhone from '@assets/svg/picto_phone.svg';
 import CurriculumVitae from '@interfaces/curriculumVitae';
 import cn from 'classnames';
+import { eo } from 'date-fns/locale';
+import format from 'date-fns/format';
 import s from './style.module.css';
 
 interface Props {
@@ -38,7 +40,7 @@ const Curriculum = ({ cv }: Props) => {
     picture,
   } = cv.attributes;
   const pictureUrl = `${process.env.NEXT_PUBLIC_API_URL}${picture.data.attributes.formats.small.url}`;
-  const formattedAvailability = new Date(availability).toISOString();
+  const formattedAvailability = format(new Date(availability), 'MMMM do, yyyy');
   return (
     <>
       <Head>
@@ -61,15 +63,17 @@ const Curriculum = ({ cv }: Props) => {
           />
         </span>
 
-        <div className={s.introduction}>
+        <section className={s.introduction}>
           <h1>{name}</h1>
           <h2>{title}</h2>
           <h3>Profile</h3>
           <p>{introduction}</p>
-          <hr />
-        </div>
-        <div className={s.informations}>
-          <h4>Available after {formattedAvailability}</h4>
+        </section>
+        <hr className={s.introRule} />
+        <section className={s.informations}>
+          <h4 className={s.availability}>
+            Available after {formattedAvailability}
+          </h4>
           <h3>Contact</h3>
           {wechatId && (
             <p className={cn(s.contactItem, s.wechat)}>
@@ -111,8 +115,8 @@ const Curriculum = ({ cv }: Props) => {
               </span>
             </p>
           )}
-        </div>
-        <div className={s.education}>
+        </section>
+        <section className={s.education}>
           <h3>Education</h3>
           {educations.data.map((education) => {
             const key = `education-${education.id}`;
@@ -129,8 +133,8 @@ const Curriculum = ({ cv }: Props) => {
               </Fragment>
             );
           })}
-        </div>
-        <div className={s.skills}>
+        </section>
+        <section className={s.skills}>
           <h3>Skills</h3>
           {skills.data.map((skill) => {
             const key = `skill-${skill.id}`;
@@ -138,8 +142,8 @@ const Curriculum = ({ cv }: Props) => {
 
             return <span key={key}>{description}</span>;
           })}
-        </div>
-        <div className={s.languages}>
+        </section>
+        <section className={s.languages}>
           <h3>Languages</h3>
           {languages.data.map((language) => {
             const key = `language-${language.id}`;
@@ -152,8 +156,8 @@ const Curriculum = ({ cv }: Props) => {
               </p>
             );
           })}
-        </div>
-        <div className={s.experiences}>
+        </section>
+        <section className={s.experiences}>
           <h3>Work experience</h3>
           {work_experiences.data.map((experience) => {
             const {
@@ -194,7 +198,7 @@ const Curriculum = ({ cv }: Props) => {
               </Fragment>
             );
           })}
-        </div>
+        </section>
       </div>
     </>
   );
