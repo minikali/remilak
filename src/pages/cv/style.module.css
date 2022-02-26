@@ -1,0 +1,58 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #00000010;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #444444;
+}
+
+.informations {
+  text-align: right;
+}
+
+.profilePicture {
+  width: 250px;
+  height: 244px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.introduction {
+  text-align: justify;
+  line-height: 1.5rem;
+}
+
+.contactItem {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin: 10px 0 0 0;
+}
+
+.contactItem span {
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: 5px;
+}
+
+.contactItem svg {
+  width: 25px;
+}
+
+.phone svg {
+  width: 15px;
+}
+
+.experiences {
+  padding: 40px;
+}
+
+.experience {
+}
