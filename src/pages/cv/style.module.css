@@ -87,6 +87,7 @@ h4.availability {
 
 .contactItem .pictoCv {
   margin-left: 0.3rem;
+  align-items: baseline;
 }
 
 .pictoLocation > svg {
