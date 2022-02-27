@@ -9,7 +9,6 @@ import PictoLocation from '@assets/svg/picto_location.svg';
 import PictoPhone from '@assets/svg/picto_phone.svg';
 import CurriculumVitae from '@interfaces/curriculumVitae';
 import cn from 'classnames';
-import { eo } from 'date-fns/locale';
 import format from 'date-fns/format';
 import s from './style.module.css';
 
@@ -76,44 +75,52 @@ const Curriculum = ({ cv }: Props) => {
           </h4>
           <h3>Contact</h3>
           {wechatId && (
-            <p className={cn(s.contactItem, s.wechat)}>
+            <a
+              className={cn(s.contactItem, s.wechat)}
+              href={`weixin://dl/chat?${wechatId}`}
+            >
               {wechatId}
-              <span>
+              <span className={s.pictoCv}>
                 <PictoWechat />
               </span>
-            </p>
+            </a>
           )}
           {email && (
-            <p className={cn(s.contactItem, s.email)}>
+            <a className={cn(s.contactItem, s.email)} href={`mailto:${email}`}>
               {email}
-              <span>
+              <span className={s.pictoCv}>
                 <PictoEmail />
               </span>
-            </p>
+            </a>
           )}
           {location && (
             <p className={cn(s.contactItem, s.location)}>
               {location}
-              <span>
+              <span  className={s.pictoCv}>
                 <PictoLocation />
               </span>
             </p>
           )}
           {phone && (
-            <p className={cn(s.contactItem, s.phone)}>
+            <a className={cn(s.contactItem, s.phone)} href='tel:+33783411789'>
               {phone}
-              <span>
+              <span className={s.pictoCv}>
                 <PictoPhone />
               </span>
-            </p>
+            </a>
           )}
           {linkedin && (
-            <p className={cn(s.contactItem, s.linkedin)}>
+            <a
+              className={cn(s.contactItem, s.linkedin)}
+              href={`https://${linkedin}`}
+              target='_blank'
+              rel='noreferrer'
+            >
               {linkedin}
-              <span>
+              <span className={s.pictoCv}>
                 <PictoLinkedin />
               </span>
-            </p>
+            </a>
           )}
         </section>
         <section className={s.education}>
@@ -129,7 +136,10 @@ const Curriculum = ({ cv }: Props) => {
                   <h4>{diploma}</h4>
                   <p>{`${school}, ${location}`}</p>
                   <p>
-                    <i>{`${startDate}-${endDate}`}</i>
+                    <i>{`${format(new Date(startDate), 'yyyy')} - ${format(
+                      new Date(endDate),
+                      'yyyy'
+                    )}`}</i>
                   </p>
                 </li>
               );
@@ -138,68 +148,94 @@ const Curriculum = ({ cv }: Props) => {
         </section>
         <section className={s.skills}>
           <h3>Skills</h3>
-          {skills.data.map((skill) => {
-            const key = `skill-${skill.id}`;
-            const { description } = skill.attributes;
-
-            return <span key={key}>{description}</span>;
-          })}
+          <ul>
+            {skills.data.map((skill, index) => {
+              const key = `skill-${skill.id}`;
+              const { description } = skill.attributes;
+              const isLast = index + 1 === skills.data.length;
+              return (
+                <li key={key}>
+                  {description}
+                  {!isLast && ','}
+                </li>
+              );
+            })}
+          </ul>
         </section>
         <section className={s.languages}>
           <h3>Languages</h3>
-          {languages.data.map((language) => {
-            const key = `language-${language.id}`;
-            const { tongue, level } = language.attributes;
+          <ul>
+            {languages.data.map((language) => {
+              const key = `language-${language.id}`;
+              const { tongue, level } = language.attributes;
 
-            return (
-              <p key={key}>
-                <b>{tongue}:</b>
-                {level}
-              </p>
-            );
-          })}
+              return (
+                <li key={key}>
+                  <b>{tongue}:&nbsp;</b>
+                  {level}
+                </li>
+              );
+            })}
+          </ul>
         </section>
+        <hr className={s.introRule} />
         <section className={s.experiences}>
           <h3>Work experience</h3>
-          {work_experiences.data.map((experience) => {
-            const {
-              company,
-              position,
-              location,
-              startDate,
-              endDate,
-              currentPosition,
-              introduction,
-              description,
-              createdAt,
-              updatedAt,
-              publishedAt,
-              locale,
-              tasks,
-            } = experience.attributes;
-            const key = `experience-${experience.id}`;
+          <ul>
+            {work_experiences.data.map((experience) => {
+              const {
+                company,
+                position,
+                location,
+                startDate,
+                endDate,
+                currentPosition,
+                introduction,
+                description,
+                createdAt,
+                updatedAt,
+                publishedAt,
+                locale,
+                tasks,
+              } = experience.attributes;
+              const key = `experience-${experience.id}`;
 
-            return (
-              <Fragment key={key}>
-                <h4>{position}</h4>
-                <h5>
-                  <i>
-                    {location}, {startDate} - {endDate}
-                  </i>
-                </h5>
-                {tasks.data.length > 0 && (
-                  <ul>
-                    {tasks.data.map((task) => {
-                      const key = `experience-task-${task.id}`;
-                      const { description } = task.attributes;
+              const formattedStartDate = format(
+                new Date(startDate),
+                'MMM yyyy'
+              );
+              const formattedEndDate = currentPosition
+                ? 'Today'
+                : format(new Date(endDate), 'MMM yyyy');
 
-                      return <li key={key}>{description}</li>;
-                    })}
-                  </ul>
-                )}
-              </Fragment>
-            );
-          })}
+              return (
+                <li key={key} className={s.experience}>
+                  <h4>{position}</h4>
+                  <h5>
+                    <span className={s.pictoCv}>
+                      <PictoLocation />
+                    </span>
+                    {location}
+                  </h5>
+                  <h6>
+                    <i>
+                      {formattedStartDate} - {formattedEndDate}
+                    </i>
+                  </h6>
+                  {tasks.data.length > 0 && (
+                    <ul>
+                      {tasks.data.map((task) => {
+                        const key = `experience-task-${task.id}`;
+                        const { description } = task.attributes;
+
+                        return <li key={key}>{description}</li>;
+                      })}
+                    </ul>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         </section>
       </div>
     </>
