@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'api.remilak.com'],
   },
   webpack(config) {
     config.module.rules.push({
