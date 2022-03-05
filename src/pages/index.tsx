@@ -63,6 +63,7 @@ const Curriculum = ({ cv }: Props) => {
                   alt='Remi LAK'
                   width={250}
                   height={244}
+                  priority
                 />
               </span>
               <h1 className={s.firstLastName}>{name}</h1>
@@ -71,7 +72,6 @@ const Curriculum = ({ cv }: Props) => {
             <h3>Profile</h3>
             <p>{introduction}</p>
           </section>
-          {/* <hr className={s.introRule} /> */}
           <section className={s.availability}>
             <h4>
               <span>Available after</span>
