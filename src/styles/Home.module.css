@@ -12,6 +12,8 @@
   font-family: Roboto, Arial, sans-serif;
   color: #444444;
   font-size: 1.125rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .container h3 {
