@@ -221,7 +221,9 @@ const Curriculum = ({ cv }: Props) => {
 
                 return (
                   <li key={key} className={s.experience}>
-                    <h4 className={s.experiencePosition}>{position}</h4>
+                    <h4 className={s.experiencePosition}>
+                      {position} | {company}
+                    </h4>
                     <h5 className={s.experienceLocation}>
                       <span className={s.pictoCv}>
                         <PictoLocation />
@@ -229,7 +231,6 @@ const Curriculum = ({ cv }: Props) => {
                       {location}
                     </h5>
                     <h6 className={s.experienceSubtitle}>
-                      <span>{company},&nbsp;</span>
                       <i>
                         {formattedStartDate} - {formattedEndDate}
                       </i>
