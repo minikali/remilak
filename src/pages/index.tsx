@@ -228,13 +228,12 @@ const Curriculum = ({ cv }: Props) => {
                       <span className={s.pictoCv}>
                         <PictoLocation />
                       </span>
-                      {location}
-                    </h5>
-                    <h6 className={s.experienceSubtitle}>
+                      {location} |&nbsp;
                       <i>
                         {formattedStartDate} - {formattedEndDate}
                       </i>
-                    </h6>
+                    </h5>
+
                     {tasks.data.length > 0 && (
                       <ul>
                         {tasks.data.map((task) => {
