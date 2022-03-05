@@ -49,8 +49,6 @@ const Curriculum = ({ cv }: Props) => {
           name='description'
           content='Remi LAK, front-end developer proficient with Reactjs, Typescript, and Redux. My informations and experiences about front-end software engineering until today.'
         />
-        <link rel='icon' href='/favicon.ico' />
-        <meta name='viewport' content='width=device-width, initial-scale=1' />
       </Head>
       <div className={s.background}>
         <div className={s.container}>
