@@ -84,7 +84,7 @@ const Curriculum = ({ cv }: Props) => {
                 href={`weixin://dl/chat?${wechatId}`}
               >
                 {wechatId}
-                <span className={s.pictoCv}>
+                <span className={s.pictoContact}>
                   <PictoWechat />
                 </span>
               </a>
@@ -95,7 +95,7 @@ const Curriculum = ({ cv }: Props) => {
                 href={`mailto:${email}`}
               >
                 {email}
-                <span className={s.pictoCv}>
+                <span className={s.pictoContact}>
                   <PictoEmail />
                 </span>
               </a>
@@ -103,7 +103,7 @@ const Curriculum = ({ cv }: Props) => {
             {location && (
               <p className={cn(s.contactItem, s.location)}>
                 {location}
-                <span className={s.pictoCv}>
+                <span className={s.pictoContact}>
                   <PictoLocation />
                 </span>
               </p>
@@ -111,7 +111,7 @@ const Curriculum = ({ cv }: Props) => {
             {phone && (
               <a className={cn(s.contactItem, s.phone)} href='tel:+33783411789'>
                 {phone}
-                <span className={s.pictoCv}>
+                <span className={s.pictoContact}>
                   <PictoPhone />
                 </span>
               </a>
@@ -124,7 +124,7 @@ const Curriculum = ({ cv }: Props) => {
                 rel='noreferrer'
               >
                 {linkedinName}
-                <span className={s.pictoCv}>
+                <span className={s.pictoContact}>
                   <PictoLinkedin />
                 </span>
               </a>
@@ -223,7 +223,7 @@ const Curriculum = ({ cv }: Props) => {
                       {position} | <i>{company}</i>
                     </h4>
                     <h5 className={s.experienceLocation}>
-                      <span className={cn(s.pictoCv, s.pictoExperience)}>
+                      <span className={cn(s.pictoContact, s.pictoExperience)}>
                         <PictoLocation />
                       </span>
                       {location} |&nbsp;

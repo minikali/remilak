@@ -82,14 +82,18 @@
   margin: 0.5rem 0 0 0;
 }
 
-.pictoCv {
+.pictoContact {
   width: 25px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
 }
 
-.contactItem .pictoCv {
+.pictoContact svg {
+  width: 25px;
+}
+
+.contactItem .pictoContact {
   margin-left: 0.3rem;
   align-items: baseline;
 }
