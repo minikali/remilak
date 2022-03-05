@@ -167,8 +167,8 @@ const Curriculum = ({ cv }: Props) => {
                     <li className={s.skillsListItem}>
                       {description}
                       {!isLast && ','}
+                      <br />
                     </li>
-                    <br />
                   </Fragment>
                 );
               })}
