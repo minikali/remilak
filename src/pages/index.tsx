@@ -7,6 +7,7 @@ import PictoEmail from '@assets/svg/picto_email.svg';
 import PictoLinkedin from '@assets/svg/picto_linkedin.svg';
 import PictoLocation from '@assets/svg/picto_location.svg';
 import PictoPhone from '@assets/svg/picto_phone.svg';
+import Layout from '@layout/Layout';
 import CurriculumVitae from '@interfaces/curriculumVitae';
 import cn from 'classnames';
 import format from 'date-fns/format';
@@ -42,7 +43,7 @@ const Curriculum = ({ cv }: Props) => {
   const formattedAvailability = format(new Date(availability), 'MMMM do, yyyy');
   const linkedinName = linkedin.split('/').pop();
   return (
-    <>
+    <Layout>
       <Head>
         <title>CV | {name}</title>
         <meta
@@ -249,7 +250,7 @@ const Curriculum = ({ cv }: Props) => {
           </section>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 
