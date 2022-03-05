@@ -228,7 +228,8 @@ const Curriculum = ({ cv }: Props) => {
                       </span>
                       {location}
                     </h5>
-                    <h6 className={s.experienceDate}>
+                    <h6 className={s.experienceSubtitle}>
+                      <span>{company},&nbsp;</span>
                       <i>
                         {formattedStartDate} - {formattedEndDate}
                       </i>
