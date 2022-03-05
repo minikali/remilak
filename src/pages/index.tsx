@@ -225,7 +225,7 @@ const Curriculum = ({ cv }: Props) => {
                       {position} | <i>{company}</i>
                     </h4>
                     <h5 className={s.experienceLocation}>
-                      <span className={s.pictoCv}>
+                      <span className={cn(s.pictoCv, s.pictoExperience)}>
                         <PictoLocation />
                       </span>
                       {location} |&nbsp;
